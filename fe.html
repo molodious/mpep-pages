@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a { color: #4c1d95; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── NAV HEADER ── */
+        .site-header {
+            background: #fff;
+            border-top: 4px solid #4c1d95;
+            padding: 14px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        .site-header img.logo { height: 44px; }
+
+        /* ── HERO ── */
+        .hero {
+            background:
+                linear-gradient(135deg, rgba(30,10,60,0.82) 0%, rgba(45,18,96,0.75) 55%, rgba(26,8,66,0.88) 100%),
+                url('https://mechanicalpeexamprep.com/wp-content/uploads/2022/12/banner1440x720fliphoriz.png') center/cover no-repeat;
+            color: #fff;
+            padding: 80px 20px 70px;
+        }
+        .hero .container {
+            max-width: 860px;
+        }
+        .hero-text { flex: 1; }
+
+        /* ── VIDEO SECTION ── */
+        .video-section {
+            background: #f5f3ff;
+            padding: 40px 20px;
+        }
+        .video-section .container {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .video-section h2 {
+            font-family: 'Oswald', sans-serif;
+            color: #1e0a3c;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 0;
+            border-bottom: none;
+            letter-spacing: 0.5px;
+        }
+        .hero-video-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding-bottom: 42%; /* 16:9 of 720px max */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(76,29,149,0.25), 0 4px 16px rgba(0,0,0,0.2);
+            border: 2px solid rgba(76,29,149,0.3);
+        }
+        .hero-video-wrap iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #f0b429;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 46px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #c9b8e8;
+            max-width: 580px;
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+
+        .hero-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+        .hero-stars { color: #f0b429; font-size: 20px; letter-spacing: 2px; }
+        .hero-rating-text { font-size: 14px; color: #c9b8e8; }
+        .hero-rating-text strong { color: #fff; }
+
+        /* ── INTRO SECTION ── */
+        .intro-section {
+            background: #f5f3ff;
+            max-width: 860px;
+            margin: 30px auto;
+            padding: 44px 52px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(76,29,149,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        .intro-section::before {
+            content: '\201C';
+            font-family: 'Oswald', sans-serif;
+            font-size: 160px;
+            font-weight: 700;
+            color: #4c1d95;
+            opacity: 0.08;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .intro-eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #4c1d95;
+            margin-bottom: 18px;
+        }
+        .intro-section .intro-lead {
+            font-size: 1.15rem;
+            line-height: 1.75;
+            color: #1e0a3c;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .intro-section p {
+            font-size: 0.97rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-group { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+        .btn {
+            display: inline-block;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: filter 0.2s, transform 0.1s;
+        }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-1px); text-decoration: none; }
+
+        .btn-indigo {
+            background: #4c1d95;
+            color: #fff;
+            padding: 16px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-orange {
+            background: #e07b00;
+            color: #fff;
+            padding: 10px 28px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .btn-orange .btn-main {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-orange .btn-sub {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        .btn-reassurance { font-size: 12px; color: #aab; margin-top: 10px; width: 100%; }
+        .btn-reassurance a { color: #8af; }
+
+        /* ── STICKY CTA ── */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: #1e0a3c;
+            border-top: 3px solid #4c1d95;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 1000;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.3);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .sticky-cta.visible { transform: translateY(0); }
+        .sticky-cta-text { font-family: 'Oswald', sans-serif; color: #c9b8e8; font-size: 15px; white-space: nowrap; }
+        .sticky-cta-text strong { color: #fff; }
+        .sticky-cta .btn-indigo { padding: 10px 24px; font-size: 15px; white-space: nowrap; }
+
+        /* ── SECTIONS ── */
+        section {
+            background: white;
+            margin: 30px auto;
+            padding: 36px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            max-width: 960px;
+        }
+        section.alt-bg { background-color: #f5f5f5; }
+        section.light-indigo { background-color: #f5f3ff; }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            color: #1e0a3c;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            padding-bottom: 10px;
+        }
+        section h2 { border-bottom: 3px solid #4c1d95; margin-bottom: 20px; }
+
+        /* ── FEATURE GRID ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 10px;
+        }
+        @media (max-width: 640px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+        .feature-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-top: 4px solid #4c1d95;
+            border-radius: 6px;
+            padding: 22px 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .feature-card-icon { font-size: 26px; margin-bottom: 10px; }
+        .feature-card-title { font-family: 'Oswald', sans-serif; font-size: 16px; color: #1e0a3c; margin-bottom: 6px; }
+        .feature-card-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+        /* ── LISTS ── */
+        ul { list-style: none; margin-bottom: 15px; }
+        ul li { padding: 5px 0 5px 24px; position: relative; line-height: 1.5; font-size: 0.95rem; }
+        ul li:before { content: "✓"; position: absolute; left: 0; color: #4c1d95; font-weight: bold; }
+
+        /* ── TESTIMONIALS ── */
+        .testimonial-block {
+            background: #1e0a3c;
+            border-radius: 8px;
+            text-align: center;
+            padding: 40px 48px;
+            margin: 30px auto;
+            max-width: 960px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        .testimonial-stars { color: #f0b429; font-size: 20px; letter-spacing: 2px; margin-bottom: 16px; }
+        .testimonial-quote {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #c9b8e8;
+            font-style: italic;
+            max-width: 680px;
+            margin: 0 auto 18px;
+        }
+        .testimonial-name { font-family: 'Oswald', sans-serif; color: #f0b429; font-size: 15px; letter-spacing: 0.5px; }
+        .testimonial-location { font-size: 13px; color: #9a86c0; margin-top: 4px; }
+
+        /* ── PRICING GRID ── */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 10px;
+        }
+        .pricing-card {
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px 18px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .pricing-card.featured {
+            border-color: #4c1d95;
+            box-shadow: 0 4px 20px rgba(76,29,149,0.15);
+        }
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4c1d95;
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .pricing-badge.gold { background: #b45309; }
+        .pricing-plan {
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1e0a3c;
+        }
+        .pricing-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #1e0a3c;
+            line-height: 1;
+        }
+        .pricing-price span {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666;
+        }
+        .pricing-savings {
+            display: inline-block;
+            background: #f0fdf4;
+            color: #166534;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid #bbf7d0;
+        }
+        .pricing-note {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.4;
+        }
+        .pricing-divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 4px 0;
+        }
+        .pricing-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .btn-pricing-stripe {
+            background: #4c1d95;
+            color: #fff;
+            padding: 11px 16px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            display: block;
+            text-align: center;
+            transition: filter 0.2s, transform 0.1s;
+        }
+        .btn-pricing-stripe:hover { filter: brightness(1.15); transform: translateY(-1px); text-decoration: none; }
+        .btn-pricing-btc {
+            background: #e07b00;
+            color: #fff;
+            padding: 8px 16px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 4px;
+            display: block;
+            text-align: center;
+            line-height: 1.25;
+            transition: filter 0.2s, transform 0.1s;
+        }
+        .btn-pricing-btc:hover { filter: brightness(1.1); transform: translateY(-1px); text-decoration: none; }
+        .btn-pricing-btc .btc-main { display: block; font-size: 13px; }
+        .btn-pricing-btc .btc-sub { display: block; font-size: 11px; opacity: 0.85; margin-top: 1px; }
+        .pricing-stripe-only {
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        /* ── FAQ ── */
+        .faq-item { padding: 18px 0; border-bottom: 1px solid #e0e0e0; }
+        .faq-item:first-child { border-top: 1px solid #e0e0e0; }
+        .faq-item strong { font-family: 'Oswald', sans-serif; color: #1e0a3c; display: block; margin-bottom: 6px; font-size: 1rem; font-weight: 600; }
+        .faq-item p { font-size: 0.9rem; line-height: 1.6; color: #555; }
+
+        /* ── CTA SECTION ── */
+        .cta-section {
+            background: linear-gradient(135deg, #4c1d95 0%, #3b0f7a 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 40px;
+            border-radius: 8px;
+            margin: 30px auto;
+            max-width: 960px;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.3);
+        }
+        .cta-section h2 { font-family: 'Oswald', sans-serif; color: white; font-size: 2rem; border-bottom: none; margin-bottom: 8px; padding-bottom: 0; }
+        .cta-section .btn-indigo { background: #fff; color: #4c1d95; }
+        .cta-section .btn-reassurance { color: rgba(255,255,255,0.6); text-align: center; }
+        .cta-section .btn-reassurance a { color: rgba(255,255,255,0.85); }
+        .cta-section .btn-group { justify-content: center; margin-top: 20px; }
+        .cta-starting { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: rgba(255,255,255,0.9); margin-top: 8px; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 28px;
+            font-size: 14px;
+            border-top: 4px solid #4c1d95;
+            margin-bottom: 60px;
+        }
+        footer a { color: #aaa; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-video-wrap { padding-bottom: 56.25%; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            section { padding: 25px 20px; margin: 16px auto; }
+            h2 { font-size: 1.4rem; }
+            .cta-section { padding: 36px 24px; }
+            .testimonial-block { padding: 30px 24px; }
+            footer { margin-bottom: 70px; }
+            .sticky-cta-text { display: none; }
+            .sticky-cta .btn-indigo { width: 100%; text-align: center; }
+        }
+        @media (max-width: 500px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<!-- NAV HEADER -->
+    <header class="site-header">
+        <div class="container">
+            <img class="logo" src="https://mechanicalpeexamprep.com/wp-content/uploads/2020/09/Mechanical-PE-Exam-Prep.png" alt="Mechanical PE Exam Prep">
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero" id="hero">
+        <div class="container">
+            <div class="hero-text">
+                <div class="hero-eyebrow">FE Mechanical Exam Prep</div>
+                <h1>Become an Engineer in Training in Under 100 Hours.</h1>
+                <p>300 exam-like practice problems, step-by-step video solutions, and a proven study plan — everything you need to pass the FE Mechanical exam on the first try.</p>
+                <div class="hero-rating">
+                    <span class="hero-stars">★★★★★</span>
+                    <span class="hero-rating-text"><strong>Excellent</strong> · 112 reviews</span>
+                </div>
+                <div class="btn-group">
+                    <a href="#pricing" class="btn btn-indigo" style="color:#fff!important;text-decoration:none!important;">Enroll Now</a>
+                    <div class="btn-reassurance">🔒 Secure checkout &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Questions? <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">Email Dan</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTRO COPY -->
+    <div class="intro-section">
+        <div class="intro-eyebrow">Future Engineer In Training...</div>
+        <p class="intro-lead">Passing the FE Exam is one of the best things you can do for your career. It opens the door to Professional Licensure and signals your commitment to becoming an authority in your field.</p>
+        <p>But when you're pressed for time and unsure where to start, it's easy to feel overwhelmed. That's exactly why I created this program — so you don't have to figure it out alone. Just start solving problems and pass on the first try with ease and confidence in 100 hours or less.</p>
+    </div>
+
+    <!-- FEATURE GRID -->
+    <section class="light-indigo">
+        <h2>What's Included</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-card-icon">📝</div>
+                <div class="feature-card-title">300 Practice Problems</div>
+                <div class="feature-card-desc">Exam-caliber problems written to challenge — and prepare — you for what's actually on the FE Mechanical.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-icon">🎬</div>
+                <div class="feature-card-title">Video Solutions for Every Problem</div>
+                <div class="feature-card-desc">Clear, concise walkthroughs of every single problem — not just answers, but the reasoning behind them.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-icon">📋</div>
+                <div class="feature-card-title">3 Full Practice Exams</div>
+                <div class="feature-card-desc">100 problems each. Simulate real exam conditions and identify gaps before test day.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-icon">🔍</div>
+                <div class="feature-card-title">Key FE Handbook Search Terms</div>
+                <div class="feature-card-desc">Every problem flags the exact handbook search terms so you can find what you need fast during the CBT exam.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO -->
+    <div class="video-section">
+        <div class="container">
+            <h2>See What's Inside the Program</h2>
+            <div class="hero-video-wrap">
+                <iframe src="https://www.youtube.com/embed/0gGPEGtXSJs" title="FE Mechanical Exam Prep Course" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT YOU GET -->
+    <section>
+        <h2>Everything You Need to Pass</h2>
+        <ul>
+            <li>Beginner-friendly fundamentals lectures for every topic</li>
+            <li>300 exam-like practice problems — as hard as or harder than the real exam</li>
+            <li>Step-by-step video solutions for every problem</li>
+            <li>Detailed written calculations and explanations</li>
+            <li>3 full practice exams (100 problems each)</li>
+            <li>Key search terms for the NCEES FE Mechanical Reference Handbook</li>
+            <li>100% CBT-aligned — all problems solved using the FE handbook PDF</li>
+            <li>Instant, on-demand access — all content available immediately</li>
+        </ul>
+    </section>
+
+    <!-- TESTIMONIAL 1 -->
+    <div class="testimonial-block">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Doing these problems has helped me develop a unique and intuitive engineering judgment and reasoning skills which was very very handy to have during the exam."</p>
+        <div class="testimonial-name">— Biraj B., PE</div>
+        <div class="testimonial-location">Texas</div>
+    </div>
+
+    <!-- WHO THIS IS FOR -->
+    <section class="alt-bg">
+        <h2>Who This Is For</h2>
+        <ul>
+            <li>Engineers preparing to take the FE Mechanical exam</li>
+            <li>Recent grads who need a structured, efficient study plan</li>
+            <li>Working engineers who've been out of school for years — or decades</li>
+            <li>Anyone who wants to pass on the first try without guessing where to start</li>
+            <li>Engineers serious about the path to Professional Licensure</li>
+        </ul>
+    </section>
+
+    <!-- TESTIMONIAL 2 -->
+    <div class="testimonial-block">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Dan helped me pass the exam by holding me accountable and providing material that was detailed and easy to understand. He's a great mentor. I've made great career progress since enrolling in his course."</p>
+        <div class="testimonial-name">— Matt G., PE</div>
+        <div class="testimonial-location">Oregon</div>
+    </div>
+
+    <!-- PRICING -->
+    <section id="pricing">
+        <h2>Choose Your Plan</h2>
+        <p style="font-size:0.95rem;color:#555;margin-bottom:24px;">All plans include instant access to all 300 problems, video solutions, and 3 full practice exams. Cancel month-to-month anytime.</p>
+
+        <div class="pricing-grid">
+
+            <!-- Month to Month -->
+            <div class="pricing-card">
+                <div class="pricing-badge" style="background:#555;">Most Flexible</div>
+                <div class="pricing-plan">Monthly</div>
+                <div class="pricing-price">$249<span>/mo</span></div>
+                <div class="pricing-note">No commitment. Cancel anytime.</div>
+                <div class="pricing-divider"></div>
+                <div class="pricing-buttons">
+                    <a href="#" class="btn-pricing-stripe mpep-stripe-btn" data-product-id="fe_monthly" style="color:#fff!important;text-decoration:none!important;">Enroll</a>
+                    <div class="pricing-stripe-only">💳 Card payment only</div>
+                </div>
+            </div>
+
+            <!-- 3 Months -->
+            <div class="pricing-card">
+                <div class="pricing-badge">Save 20%</div>
+                <div class="pricing-plan">3 Months</div>
+                <div class="pricing-price">$599</div>
+                <div class="pricing-savings">Save $148 vs monthly</div>
+                <div class="pricing-note">One-time payment. Full 3-month access.</div>
+                <div class="pricing-divider"></div>
+                <div class="pricing-buttons">
+                    <a href="#" class="btn-pricing-stripe mpep-stripe-btn" data-product-id="fe_3mo" style="color:#fff!important;text-decoration:none!important;">Enroll</a>
+                    <a href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_3mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
+                        <span class="btc-main">Save an extra 10%</span>
+                        <span class="btc-sub">Pay with Bitcoin — $539</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 6 Months -->
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Save 33%</div>
+                <div class="pricing-plan">6 Months</div>
+                <div class="pricing-price">$999</div>
+                <div class="pricing-savings">Save $495 vs monthly</div>
+                <div class="pricing-note">One-time payment. Full 6-month access.</div>
+                <div class="pricing-divider"></div>
+                <div class="pricing-buttons">
+                    <a href="#" class="btn-pricing-stripe mpep-stripe-btn" data-product-id="fe_6mo" style="color:#fff!important;text-decoration:none!important;">Enroll</a>
+                    <a href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_6mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
+                        <span class="btc-main">Save an extra 10%</span>
+                        <span class="btc-sub">Pay with Bitcoin — $899</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 12 Months -->
+            <div class="pricing-card">
+                <div class="pricing-badge gold">Best Value</div>
+                <div class="pricing-plan">12 Months</div>
+                <div class="pricing-price">$1,799</div>
+                <div class="pricing-savings">Save $1,189 vs monthly</div>
+                <div class="pricing-note">One-time payment. Full 12-month access.</div>
+                <div class="pricing-divider"></div>
+                <div class="pricing-buttons">
+                    <a href="#" class="btn-pricing-stripe mpep-stripe-btn" data-product-id="fe_12mo" style="color:#fff!important;text-decoration:none!important;">Enroll</a>
+                    <a href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_12mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
+                        <span class="btc-main">Save an extra 10%</span>
+                        <span class="btc-sub">Pay with Bitcoin — $1,619</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h2>Ready to Earn Your EIT?</h2>
+        <p style="color:rgba(255,255,255,0.85);font-size:1rem;margin-top:6px;">Join hundreds of engineers on the path to Professional Licensure.</p>
+        <div class="price" style="font-family:'Oswald',sans-serif;font-size:2.4rem;color:#fff;margin-top:12px;">From $249<span style="font-size:1.4rem;">/mo</span></div>
+        <div class="btn-group" style="justify-content:center;margin-top:24px;">
+            <a href="#pricing" class="btn btn-indigo" style="background-color:#fff!important;color:#4c1d95!important;text-decoration:none!important;">See All Plans</a>
+            <div class="btn-reassurance">🔒 Secure checkout &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Questions? <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">Email Dan</a></div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <strong>Are the problems similar to real FE exam problems?</strong>
+                <p>Yes. Most problems are written to be as hard as actual exam problems or slightly harder. Every problem has at least one key insight embedded in it — often two or three.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Are solutions based on the Computer-Based Test (CBT) format?</strong>
+                <p>Yes. All problems are solved using the NCEES FE Mechanical Reference Handbook PDF. Written explanations call out specific search terms to help you find what you need quickly.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Can I cancel my monthly subscription anytime?</strong>
+                <p>Yes. No long-term commitment. Stay enrolled for as many or as few months as you need to prepare.</p>
+            </div>
+            <div class="faq-item">
+                <strong>I've been out of school for a long time. Is this program right for me?</strong>
+                <p>Yes. The fundamentals lectures give you the background and context you may have forgotten — or never fully grasped in college. It may take a bit more time and repetition, but the material is designed to work for everyone.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Is all the content available immediately?</strong>
+                <p>Yes. All content is available to you the moment you enroll. No drip schedule, no waiting.</p>
+            </div>
+            <div class="faq-item">
+                <strong>What if I have questions while studying?</strong>
+                <p>Most students find the video and written solutions thorough. Dan makes his best effort to respond to technical questions, especially those that come up frequently.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Are the videos and written solutions downloadable?</strong>
+                <p>No. Access is through the learning platform and requires an internet connection.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Mechanical PE Exam Prep · <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">dan@mechanicalpeexamprep.com</a></p>
+    </footer>
+
+    <!-- STICKY CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <span class="sticky-cta-text"><strong>FE Mechanical Exam Prep</strong> — 300 problems, video solutions, from $249/mo</span>
+        <a href="#pricing" class="btn btn-indigo" style="color:#fff!important;text-decoration:none!important;">See Plans</a>
+    </div>
+
+    <script>
+        const hero = document.getElementById('hero');
+        const stickyCta = document.getElementById('stickyCta');
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) { stickyCta.classList.add('visible'); }
+                else { stickyCta.classList.remove('visible'); }
+            });
+        }, { threshold: 0 });
+        observer.observe(hero);
+    </script>
+
+    <script>
+        document.querySelectorAll('.mpep-stripe-btn').forEach(function(btn){
+            btn.addEventListener('click',function(e){
+                e.preventDefault();
+                var productId = btn.getAttribute('data-product-id');
+                if(!productId) return;
+                var orig=btn.innerHTML;
+                btn.innerHTML='Loading...';btn.style.opacity='0.7';
+                fetch('https://btc.mechanicalpeexamprep.com/create-checkout-session-product',{
+                    method:'POST',headers:{'Content-Type':'application/json'},
+                    body:JSON.stringify({productId:productId})
+                }).then(r=>r.json()).then(d=>{if(d.url)window.location.href=d.url;})
+                  .catch(()=>{btn.innerHTML=orig;btn.style.opacity='1';});
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "hvac-bundle.html":  { "wp_id": 1029, "url": "/hvac-and-refrigeration-full-access-bundle/",     "title": "HVAC & Refrigeration Full Access Bundle" },
+  "tfs-bundle.html":   { "wp_id": 1336, "url": "/thermal-and-fluids-systems-full-access-bundle/", "title": "TFS Full Access Bundle" },
+  "fe.html":           { "wp_id": 2400, "url": "/fe-mechanical-exam-prep-course/",                "title": "FE Mechanical Exam Prep" },
+  "cse.html":          { "wp_id": 3540, "url": "/critical-systems-engineering/",                  "title": "Critical Systems Engineering" },
+  "hvac-ebook.html":   { "wp_id": 3640, "url": "/hvac-practice-problems-ebook/",                 "title": "HVAC Practice Problems eBook" },
+  "tfs-ebook.html":    { "wp_id": 3641, "url": "/tfs-practice-problems-ebook/",                  "title": "TFS Practice Problems eBook" },
+  "fundamentals.html": { "wp_id": 3639, "url": "/mechanical-pe-fundamentals/",                   "title": "Mechanical PE Fundamentals" },
+  "dip.html":          { "wp_id": 3634, "url": "/daily-insights-premium/",                       "title": "Daily Insights Premium" }
+}

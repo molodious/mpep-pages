@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            color: #dd2743;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ── NAV HEADER ── */
+        .site-header {
+            background: #fff;
+            border-top: 4px solid #dd2743;
+            padding: 14px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .site-header img.logo {
+            height: 44px;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            color: #fff;
+            padding: 80px 20px 70px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://import.cdn.thinkific.com/161432/BaPcA6iWTeKNmPiFS2gK_chiller_plant_resized.png?width=1920');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10,18,40,0.72) 0%, rgba(15,30,70,0.62) 60%, rgba(10,20,50,0.55) 100%);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 860px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #f0b429;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 46px;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            color: #fff;
+            font-weight: 700;
+            max-width: 640px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #c9d0d8;
+            max-width: 560px;
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+
+        .hero-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .hero-stars {
+            color: #f0b429;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-rating-text {
+            font-size: 14px;
+            color: #c9d0d8;
+        }
+
+        .hero-rating-text strong {
+            color: #fff;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-group {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: filter 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+            text-decoration: none;
+        }
+
+        .btn-red {
+            background: #dd2743;
+            color: #fff;
+            padding: 16px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-orange {
+            background: #e07b00;
+            color: #fff;
+            padding: 10px 28px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .btn-orange .btn-main {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-orange .btn-sub {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .btn-reassurance {
+            font-size: 12px;
+            color: #aab;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .btn-reassurance a {
+            color: #8af;
+        }
+
+        /* ── STICKY CTA BAR ── */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a2e;
+            border-top: 3px solid #dd2743;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 1000;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.3);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-cta-text {
+            font-family: 'Oswald', sans-serif;
+            color: #c9d0d8;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        .sticky-cta-text strong {
+            color: #fff;
+        }
+
+        .sticky-cta .btn-red {
+            padding: 10px 24px;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 500px) {
+            .sticky-cta-text { display: none; }
+            .sticky-cta .btn-red { width: 100%; text-align: center; }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            background: white;
+            margin: 30px auto;
+            padding: 36px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            max-width: 860px;
+        }
+
+        section.alt-bg {
+            background-color: #f5f5f5;
+        }
+
+        section.light-blue {
+            background-color: #f0f4f8;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            color: #1a1a2e;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            padding-bottom: 10px;
+        }
+
+        section h2 {
+            border-bottom: 3px solid #dd2743;
+            margin-bottom: 20px;
+        }
+
+        /* ── SEQUENCE DIAGRAM ── */
+        .sequence {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin: 20px 0 10px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .sequence-step {
+            flex: 1;
+            padding: 14px 16px;
+            text-align: center;
+            background: #f0f4f8;
+            border-right: 1px solid #dce4ef;
+            position: relative;
+        }
+
+        .sequence-step:last-child {
+            border-right: none;
+        }
+
+        .sequence-step.active {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .sequence-step .step-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #dd2743;
+            margin-bottom: 4px;
+        }
+
+        .sequence-step.active .step-label {
+            color: #f0b429;
+        }
+
+        .sequence-step .step-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1a1a2e;
+        }
+
+        .sequence-step.active .step-name {
+            color: #fff;
+        }
+
+        .sequence-step .step-desc {
+            font-size: 0.78rem;
+            color: #666;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .sequence-step.active .step-desc {
+            color: #c9d0d8;
+        }
+
+        .sequence-arrow {
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            color: #aaa;
+            font-size: 20px;
+            background: #f0f4f8;
+        }
+
+        .sequence-desc {
+            font-size: 0.88rem;
+            color: #555;
+            line-height: 1.6;
+            margin-top: 12px;
+        }
+
+        /* ── ACCORDION ── */
+        .accordion-item {
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-left: 4px solid #dd2743;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: white;
+            color: #1a1a2e;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background-color: #f9f9f9;
+        }
+
+        .accordion-header.active {
+            background-color: #f0f4f8;
+        }
+
+        .accordion-icon {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #dd2743;
+            flex-shrink: 0;
+            margin-left: 12px;
+            transition: transform 0.2s;
+            line-height: 1;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 14px 18px;
+            background: #f9f9f9;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .accordion-content ul {
+            margin: 0;
+        }
+
+        .accordion-content ul li {
+            padding: 5px 0 5px 22px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .accordion-content ul li:before {
+            content: "✓";
+            color: #dd2743;
+            font-weight: bold;
+        }
+
+        /* ── LISTS ── */
+        ul {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            padding: 5px 0 5px 24px;
+            position: relative;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #dd2743;
+            font-weight: bold;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonial-block {
+            background: #1a1a2e;
+            border-radius: 8px;
+            text-align: center;
+            padding: 40px 48px;
+            margin: 30px auto;
+            max-width: 860px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-stars {
+            font-family: 'Oswald', sans-serif;
+            color: #f0b429;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-quote {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #c9d0d8;
+            font-style: italic;
+            max-width: 680px;
+            margin: 0 auto 18px;
+        }
+
+        .testimonial-name {
+            font-family: 'Oswald', sans-serif;
+            color: #f0b429;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── FAQ ── */
+        .faq-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .faq-item strong {
+            font-family: 'Oswald', sans-serif;
+            color: #1a1a2e;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* ── CTA SECTION ── */
+        .cta-section {
+            background: linear-gradient(135deg, #dd2743 0%, #b01e33 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 40px;
+            border-radius: 8px;
+            margin: 30px auto;
+            max-width: 860px;
+            box-shadow: 0 4px 12px rgba(221, 39, 67, 0.25);
+        }
+
+        .cta-section h2 {
+            font-family: 'Oswald', sans-serif;
+            color: white;
+            font-size: 2rem;
+            border-bottom: none;
+            margin-bottom: 8px;
+            padding-bottom: 0;
+        }
+
+        .cta-section .btn-group {
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .cta-section .btn-red {
+            background: #fff;
+            color: #dd2743;
+        }
+
+        .cta-section .btn-reassurance {
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+        }
+
+        .cta-section .btn-reassurance a {
+            color: rgba(255,255,255,0.85);
+        }
+
+        .price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 10px 0 4px;
+        }
+
+        .bundle-link {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.25);
+            font-size: 0.85rem;
+        }
+
+        .bundle-link a {
+            color: #f0b429;
+            font-weight: 600;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 28px;
+            font-size: 14px;
+            border-top: 4px solid #dd2743;
+            margin-bottom: 60px;
+        }
+
+        footer a { color: #aaa; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            .feature-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 50px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 25px 20px;
+                margin: 16px auto;
+            }
+
+            h2 { font-size: 1.4rem; }
+
+            .sequence {
+                flex-direction: column;
+            }
+
+            .sequence-step {
+                border-right: none;
+                border-bottom: 1px solid #dce4ef;
+            }
+
+            .sequence-step:last-child {
+                border-bottom: none;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-red, .btn-orange {
+                text-align: center;
+            }
+
+            .cta-section {
+                padding: 36px 24px;
+            }
+
+            .testimonial-block {
+                padding: 30px 24px;
+            }
+
+            footer {
+                margin-bottom: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- NAV HEADER -->
+    <header class="site-header">
+        <div class="container">
+            <img class="logo" src="https://mechanicalpeexamprep.com/wp-content/uploads/2020/09/Mechanical-PE-Exam-Prep.png" alt="Mechanical PE Exam Prep">
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-eyebrow">Mechanical PE Fundamentals</div>
+            <h1>Everything You Need Before Practice Problems.</h1>
+            <p>107 focused lessons across all 9 PE exam topic areas. In under 5 hours, you'll have the foundation you need — ready to start practice problems the right way.</p>
+            <div class="hero-rating">
+                <span class="hero-stars">★★★★★</span>
+                <span class="hero-rating-text"><strong>Excellent</strong> · 112 reviews</span>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-red mpep-stripe-btn" style="color:#fff!important;text-decoration:none!important;">Enroll Now</a>
+                <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=fundamentals" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+                    <span class="btn-main">Save 10%</span>
+                    <span class="btn-sub">Pay with Bitcoin</span>
+                </a>
+                <div class="btn-reassurance">🔒 Secure checkout &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Questions? <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">Email Dan</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <section class="alt-bg">
+        <h2>Why Engineers Choose Fundamentals</h2>
+        <div class="feature-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:10px;">
+            <div style="background:#fff;border:1px solid #e5e7eb;border-top:4px solid #dd2743;border-radius:6px;padding:22px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                <div style="font-size:26px;margin-bottom:10px;">🧠</div>
+                <div style="font-family:'Oswald',sans-serif;font-size:16px;color:#1a1a2e;margin-bottom:6px;">Engineer-First Structure</div>
+                <div style="font-size:13px;color:#555;line-height:1.6;">9 topic areas organized the way engineers think — not the way textbooks are written.</div>
+            </div>
+            <div style="background:#fff;border:1px solid #e5e7eb;border-top:4px solid #dd2743;border-radius:6px;padding:22px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                <div style="font-size:26px;margin-bottom:10px;">📐</div>
+                <div style="font-family:'Oswald',sans-serif;font-size:16px;color:#1a1a2e;margin-bottom:6px;">107 In-Depth Lessons</div>
+                <div style="font-size:13px;color:#555;line-height:1.6;">More rigorous than a concept overview. Every formula, every process, at exam depth.</div>
+            </div>
+            <div style="background:#fff;border:1px solid #e5e7eb;border-top:4px solid #dd2743;border-radius:6px;padding:22px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                <div style="font-size:26px;margin-bottom:10px;">🎯</div>
+                <div style="font-family:'Oswald',sans-serif;font-size:16px;color:#1a1a2e;margin-bottom:6px;">Exam-Relevant Only</div>
+                <div style="font-size:13px;color:#555;line-height:1.6;">No filler. Every lesson is tied directly to what the HVACR and TFS PE exams actually test.</div>
+            </div>
+            <div style="background:#fff;border:1px solid #e5e7eb;border-top:4px solid #dd2743;border-radius:6px;padding:22px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+                <div style="font-size:26px;margin-bottom:10px;">📦</div>
+                <div style="font-family:'Oswald',sans-serif;font-size:16px;color:#1a1a2e;margin-bottom:6px;">Included in Both Bundles</div>
+                <div style="font-size:13px;color:#555;line-height:1.6;">Already enrolled in the Full Access Bundle? You already have this. No extra cost.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section>
+        <h2>What You Get</h2>
+        <ul>
+            <li>107 lessons across 9 core topic areas</li>
+            <li>5.5 hours of on-demand video content</li>
+            <li>Covers every essential topic tested on the HVACR and Thermal Fluids Systems PE exams</li>
+            <li>Logical, engineer-first structure — no fluff, no filler</li>
+            <li>Included in the HVACR and TFS Full Access Bundles</li>
+            <li>Instant access upon enrollment</li>
+        </ul>
+
+        <h3 style="margin-top: 22px; margin-bottom: 14px; color: #1a1a2e; font-weight: 600; font-size: 1rem; font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;">How It Fits Into Your PE Prep</h3>
+        <div class="sequence">
+            <div class="sequence-step">
+                <div class="step-label">Step 1</div>
+                <div class="step-name">Daily Insights</div>
+                <div class="step-desc">Key concepts &amp; lifestyle coaching</div>
+            </div>
+            <div class="sequence-step active">
+                <div class="step-label">Step 2</div>
+                <div class="step-name">Fundamentals</div>
+                <div class="step-desc">Deep foundation at exam depth</div>
+            </div>
+            <div class="sequence-step">
+                <div class="step-label">Step 3</div>
+                <div class="step-name">Practice Problems</div>
+                <div class="step-desc">Full Access Bundle application</div>
+            </div>
+        </div>
+        <p class="sequence-desc">Daily Insights gives you the concepts. Fundamentals goes deeper — every formula, every process, every principle at exam depth. Together, these two courses are everything you need to walk into practice problems fully prepared.</p>
+    </section>
+
+    <!-- What's Inside (Accordion) -->
+    <section class="light-blue">
+        <h2>What's Inside</h2>
+        <p style="font-weight: 600; font-size: 0.95rem; color: #1a1a2e; margin-bottom: 16px;">Technical Foundation for the HVACR &amp; Thermal Fluids Systems PE Exams</p>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Orientation &amp; Study Strategy
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Course overview and how to use this material</li>
+                    <li>How to use the Full Access Bundle</li>
+                    <li>How long you should study</li>
+                    <li>How to ask questions and stay accountable</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Properties of a Substance
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Mass, temperature, pressure, density, specific volume</li>
+                    <li>Internal energy, enthalpy, entropy</li>
+                    <li>Specific heat, latent heat, quality</li>
+                    <li>Steam tables, superheated steam, subcooled water</li>
+                    <li>Interpolating, pressure cooker example</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Thermodynamics &amp; Cycles
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Ideal gases, universal gas constant, PV=nRT</li>
+                    <li>Thermodynamic processes (Parts 1 &amp; 2)</li>
+                    <li>Open and closed systems</li>
+                    <li>First Law of Thermodynamics</li>
+                    <li>Steady Flow Energy Equation (SFEE)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Fluid Mechanics &amp; Pumps
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Laminar vs. turbulent flow, Reynolds number</li>
+                    <li>Friction loss, friction factor, Darcy equation</li>
+                    <li>Pumps: hydraulic horsepower, efficiency, NPSH, cavitation</li>
+                    <li>Bernoulli equation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Heat Transfer
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Thermal conductivity, conduction through flat plates and pipes</li>
+                    <li>Convection through a film; forced convection</li>
+                    <li>Radiation</li>
+                    <li>Overall heat transfer coefficient</li>
+                    <li>Heat exchangers: parallel flow, counter flow, LMTD</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Refrigeration Cycles
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Refrigerators and heat pumps</li>
+                    <li>Pressure-enthalpy diagram</li>
+                    <li>COP, EER, refrigeration capacity</li>
+                    <li>Chilled water systems, condenser water, cooling towers</li>
+                    <li>Water side economizer</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Psychrometrics &amp; Air Conditioning
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Dry bulb, wet bulb, dew point</li>
+                    <li>Humidity ratio, relative humidity, enthalpy, specific volume</li>
+                    <li>Process lines</li>
+                    <li>Humidity control, bypass cooling, cooling loads</li>
+                    <li>Internal and latent heat sources</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Ventilation &amp; Cooling Loads
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Outside air, AHU types</li>
+                    <li>Ventilation rate procedure</li>
+                    <li>Thermal lag, CLTD</li>
+                    <li>Refrigeration tons and heating loads</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Air Distribution &amp; Fans
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <ul>
+                    <li>Fan affinity laws, power, efficiency</li>
+                    <li>Friction loss in ductwork</li>
+                    <li>System design principles</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial 1 — after What's Inside, before Who This Is For -->
+    <div class="testimonial-block">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"This course is excellent at distilling the big ticket items for PE study and keeping your prep time well allocated. The introductory content is great and Dan is not just a smart guy, he's an excellent teacher that knows how to distill concepts clearly and concisely. The practice problems begin simply and then slowly compound additional concepts until you're cranking out very challenging problems."</p>
+        <div class="testimonial-name">— Liam McAninch, PE</div>
+    </div>
+
+    <!-- Who This Is For -->
+    <section class="alt-bg">
+        <h2>Who This Is For</h2>
+        <ul>
+            <li>You're preparing for the HVACR or Thermal Fluids Systems PE exam</li>
+            <li>You want more than surface-level concept review — you want to truly understand the material</li>
+            <li>You've finished Daily Insights and are ready to go deeper</li>
+            <li>You're starting the Full Access Bundle and want a strong foundation first</li>
+            <li>You don't want to waste study time piecing together resources from multiple places</li>
+        </ul>
+    </section>
+
+    <!-- Testimonial 2 — after Who This Is For, before CTA -->
+    <div class="testimonial-block">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Dan's program not only provided me the tools to study efficiently and pass the test on the first try, it also gave me invaluable insights on how to practice as a professional engineer. His teaching style is better than most of my previous college professors. His reasoning is clear, concise, and practical."</p>
+        <div class="testimonial-name">— Andy Udovich, PE</div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h2>Enroll Now</h2>
+        <p style="color: rgba(255,255,255,0.85); font-size: 1rem; margin-top: 6px;">Get instant access to all 107 lessons.</p>
+        <div class="price">$399</div>
+        <div class="btn-group" style="justify-content: center; margin-top: 20px;">
+            <a href="#" class="btn btn-red mpep-stripe-btn"  style="background-color:#fff!important;color:#dd2743!important;text-decoration:none!important;">Enroll Now</a>
+            <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=fundamentals" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+                <span class="btn-main">Save 10%</span>
+                <span class="btn-sub">Pay with Bitcoin</span>
+            </a>
+            <div class="btn-reassurance">🔒 Secure checkout &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Questions? <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">Email Dan</a></div>
+        </div>
+        <div class="bundle-link">
+            Already enrolled in the Full Access Bundle? This course is included. Explore the <a href="https://mechanicalpeexamprep.com/hvac-and-refrigeration-full-access-bundle/" target="_blank">HVAC &amp; Refrigeration Full Access Bundle</a> or <a href="https://mechanicalpeexamprep.com/thermal-and-fluids-systems-full-access-bundle/" target="_blank">Thermal &amp; Fluids Systems Full Access Bundle</a>.
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <strong>Is Fundamentals included in the Full Access Bundle?</strong>
+                <p>Yes. If you're enrolled in either the HVACR or TFS Full Access Bundle, you already have access to this course.</p>
+            </div>
+            <div class="faq-item">
+                <strong>What's the difference between Daily Insights and Fundamentals?</strong>
+                <p>Daily Insights is a short-form intro — key concepts and lifestyle coaching. Fundamentals goes deeper: 107 lessons, more rigorous treatment of every topic, designed to take you to exam-ready depth. Think of Daily Insights as the overview, Fundamentals as the foundation.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Do I need Daily Insights before taking Fundamentals?</strong>
+                <p>Recommended but not required. Daily Insights builds familiarity with the concepts — Fundamentals assumes you want to go deep. Together they're the ideal starting sequence.</p>
+            </div>
+            <div class="faq-item">
+                <strong>How long does it take to complete?</strong>
+                <p>5.5 hours of video content. Most students work through it over 2–4 weeks while studying 1–2 hours per day.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Can I access this on mobile?</strong>
+                <p>Yes. Watch on any device with internet access.</p>
+            </div>
+            <div class="faq-item">
+                <strong>What if I have questions while going through the course?</strong>
+                <p>Full Access Bundle students have access to office hours with Dan. Standalone Fundamentals students can reach Dan at <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">dan@mechanicalpeexamprep.com</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Mechanical PE Exam Prep · <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">dan@mechanicalpeexamprep.com</a></p>
+    </footer>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta" id="stickyCta">
+        <span class="sticky-cta-text"><strong>Mechanical PE Fundamentals</strong> — 107 lessons, instant access</span>
+        <a href="#" class="btn btn-red mpep-stripe-btn" style="color:#fff!important;text-decoration:none!important;">Enroll Now</a>
+    </div>
+
+    <script>
+        // Accordion — one open at a time
+        function toggleAccordion(header) {
+            const isActive = header.classList.contains('active');
+            document.querySelectorAll('.accordion-header.active').forEach(function(openHeader) {
+                openHeader.classList.remove('active');
+                openHeader.nextElementSibling.classList.remove('active');
+            });
+            if (!isActive) {
+                header.classList.add('active');
+                header.nextElementSibling.classList.add('active');
+            }
+        }
+
+        // Sticky CTA — show after hero scrolls out of view
+        const hero = document.getElementById('hero');
+        const stickyCta = document.getElementById('stickyCta');
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0 });
+
+        observer.observe(hero);
+    </script>
+
+    <script>
+    document.querySelectorAll('.mpep-stripe-btn').forEach(function(btn){
+        btn.addEventListener('click',function(e){
+            e.preventDefault();var orig=btn.innerHTML;
+            btn.innerHTML='Loading...';btn.style.opacity='0.7';
+            fetch('https://btc.mechanicalpeexamprep.com/create-checkout-session-product',{
+                method:'POST',headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({productId:'fundamentals'})
+            }).then(r=>r.json()).then(d=>{if(d.url)window.location.href=d.url;})
+              .catch(()=>{btn.innerHTML=orig;btn.style.opacity='1';});
+        });
+    });
+    </script>
+</body>
+</html>

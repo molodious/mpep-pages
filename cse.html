@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a { color: #2d7a4f; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── NAV HEADER ── */
+        .site-header {
+            background: #fff;
+            border-top: 4px solid #2d7a4f;
+            padding: 14px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        .site-header img.logo { height: 44px; }
+
+        /* ── HERO ── */
+        .hero {
+            background:
+                linear-gradient(135deg, rgba(13,43,30,0.82) 0%, rgba(26,74,46,0.75) 55%, rgba(15,61,36,0.88) 100%),
+                url('https://mechanicalpeexamprep.com/wp-content/uploads/2025/07/homeslider1900x600_blue.png') center/cover no-repeat;
+            color: #fff;
+            padding: 70px 20px 60px;
+        }
+        .hero .container { display: flex; align-items: center; gap: 50px; max-width: 1100px; }
+        .hero-text { flex: 1; }
+        .hero-image { flex: 0 0 300px; text-align: center; }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(45,122,79,0.15);
+            border: 2px solid rgba(255,255,255,0.15);
+        }
+
+        .hero-eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #6fcf8e;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 40px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            color: #fff;
+            font-weight: 700;
+            max-width: 600px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #b8d4c4;
+            max-width: 520px;
+            margin-bottom: 22px;
+            line-height: 1.7;
+        }
+
+        .hero-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+        .hero-stars { color: #f0b429; font-size: 20px; letter-spacing: 2px; }
+        .hero-rating-text { font-size: 14px; color: #b8d4c4; }
+        .hero-rating-text strong { color: #fff; }
+
+        /* ── BUTTONS ── */
+        .btn-group { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+        .btn {
+            display: inline-block;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: filter 0.2s, transform 0.1s;
+        }
+        .btn:hover { filter: brightness(1.1); transform: translateY(-1px); text-decoration: none; }
+
+        .btn-green {
+            background: #2d7a4f;
+            color: #fff;
+            padding: 16px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-orange {
+            background: #e07b00;
+            color: #fff;
+            padding: 10px 28px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .btn-orange .btn-main {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-orange .btn-sub {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        .btn-reassurance { font-size: 12px; color: #aab; margin-top: 10px; width: 100%; }
+        .btn-reassurance a { color: #8af; }
+
+        /* ── STICKY CTA ── */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: #0d2b1e;
+            border-top: 3px solid #2d7a4f;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 1000;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.3);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .sticky-cta.visible { transform: translateY(0); }
+        .sticky-cta-text { font-family: 'Oswald', sans-serif; color: #b8d4c4; font-size: 15px; white-space: nowrap; }
+        .sticky-cta-text strong { color: #fff; }
+        .sticky-cta .btn-green { padding: 10px 24px; font-size: 15px; white-space: nowrap; }
+
+        /* ── SECTIONS ── */
+        section {
+            background: white;
+            margin: 30px auto;
+            padding: 36px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            max-width: 860px;
+        }
+        section.alt-bg { background-color: #f5f5f5; }
+        section.light-green { background-color: #f0f7f3; }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            color: #0d2b1e;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            padding-bottom: 10px;
+        }
+        section h2 { border-bottom: 3px solid #2d7a4f; margin-bottom: 20px; }
+
+        /* ── FEATURE GRID ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 10px;
+        }
+        @media (max-width: 640px) {
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .feature-card {
+            background: #fff;
+            border: 1px solid #d0e8d9;
+            border-top: 4px solid #2d7a4f;
+            border-radius: 6px;
+            padding: 22px 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .feature-card-icon { font-size: 26px; margin-bottom: 10px; }
+        .feature-card-title { font-family: 'Oswald', sans-serif; font-size: 16px; color: #0d2b1e; margin-bottom: 6px; }
+        .feature-card-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+        /* ── ACCORDION ── */
+        .accordion-item {
+            margin: 8px 0;
+            border: 1px solid #d0e8d9;
+            border-left: 4px solid #2d7a4f;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background: white;
+            color: #0d2b1e;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+            user-select: none;
+        }
+        .accordion-header:hover { background-color: #f0f7f3; }
+        .accordion-header.active { background-color: #e6f2ec; }
+        .accordion-icon {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2d7a4f;
+            flex-shrink: 0;
+            margin-left: 12px;
+            transition: transform 0.2s;
+            line-height: 1;
+        }
+        .accordion-header.active .accordion-icon { transform: rotate(45deg); }
+        .accordion-content {
+            display: none;
+            padding: 14px 18px;
+            background: #f8fdf9;
+            border-top: 1px solid #d0e8d9;
+        }
+        .accordion-content.active { display: block; }
+        .accordion-content p { font-size: 0.9rem; line-height: 1.6; color: #444; }
+
+        /* ── LISTS ── */
+        ul { list-style: none; margin-bottom: 15px; }
+        ul li {
+            padding: 5px 0 5px 24px;
+            position: relative;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        ul li:before { content: "✓"; position: absolute; left: 0; color: #2d7a4f; font-weight: bold; }
+
+        /* ── PDH BADGE ── */
+        .pdh-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .pdh-badge {
+            flex-shrink: 0;
+            background: #2d7a4f;
+            color: #fff;
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(45,122,79,0.35);
+        }
+        .pdh-badge-number { font-family: 'Oswald', sans-serif; font-size: 46px; font-weight: 700; line-height: 1; }
+        .pdh-badge-label { font-family: 'Oswald', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+        .pdh-text { flex: 1; }
+        .pdh-text p { font-size: 0.95rem; line-height: 1.7; color: #444; }
+
+        /* ── INSTRUCTOR BIO ── */
+        .bio-row { display: flex; gap: 28px; align-items: flex-start; }
+        .bio-photo img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid #2d7a4f;
+            object-fit: cover;
+        }
+        .bio-text h3 { font-family: 'Oswald', sans-serif; font-size: 20px; color: #0d2b1e; margin-bottom: 6px; }
+        .bio-text p { font-size: 0.9rem; line-height: 1.7; color: #444; }
+
+        /* ── TESTIMONIALS (pull-quote) ── */
+        .testimonial-block {
+            background: #0d2b1e;
+            border-radius: 8px;
+            text-align: center;
+            padding: 40px 48px;
+            margin: 30px auto;
+            max-width: 860px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .testimonial-stars { color: #f0b429; font-size: 20px; letter-spacing: 2px; margin-bottom: 16px; }
+        .testimonial-quote {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #b8d4c4;
+            font-style: italic;
+            max-width: 680px;
+            margin: 0 auto 18px;
+        }
+        .testimonial-name { font-family: 'Oswald', sans-serif; color: #6fcf8e; font-size: 15px; letter-spacing: 0.5px; }
+
+        /* ── CTA SECTION ── */
+        .cta-section {
+            background: linear-gradient(135deg, #2d7a4f 0%, #1e5c38 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 40px;
+            border-radius: 8px;
+            margin: 30px auto;
+            max-width: 860px;
+            box-shadow: 0 4px 12px rgba(45,122,79,0.3);
+        }
+        .cta-section h2 {
+            font-family: 'Oswald', sans-serif;
+            color: white;
+            font-size: 2rem;
+            border-bottom: none;
+            margin-bottom: 8px;
+            padding-bottom: 0;
+        }
+        .cta-section .btn-group { justify-content: center; margin-top: 20px; }
+        .cta-section .btn-green { background: #fff; color: #2d7a4f; }
+        .cta-section .btn-reassurance { color: rgba(255,255,255,0.6); text-align: center; }
+        .cta-section .btn-reassurance a { color: rgba(255,255,255,0.85); }
+        .price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 10px 0 4px;
+        }
+
+        /* ── FAQ ── */
+        .faq-item { padding: 18px 0; border-bottom: 1px solid #e0e0e0; }
+        .faq-item:first-child { border-top: 1px solid #e0e0e0; }
+        .faq-item strong {
+            font-family: 'Oswald', sans-serif;
+            color: #0d2b1e;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .faq-item p { font-size: 0.9rem; line-height: 1.6; color: #555; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 28px;
+            font-size: 14px;
+            border-top: 4px solid #2d7a4f;
+            margin-bottom: 60px;
+        }
+        footer a { color: #aaa; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero .container { flex-direction: column-reverse; gap: 28px; }
+            .hero-image { flex: none; max-width: 220px; margin: 0 auto; }
+            .hero h1 { font-size: 30px; }
+            section { padding: 25px 20px; margin: 16px auto; }
+            h2 { font-size: 1.4rem; }
+            .pdh-badge-row { flex-direction: column; align-items: flex-start; }
+            .bio-row { flex-direction: column; }
+            .btn-group { flex-direction: column; align-items: stretch; }
+            .btn-green, .btn-orange { text-align: center; }
+            .cta-section { padding: 36px 24px; }
+            .testimonial-block { padding: 30px 24px; }
+            footer { margin-bottom: 70px; }
+            .sticky-cta-text { display: none; }
+            .sticky-cta .btn-green { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<!-- NAV HEADER -->
+    <header class="site-header">
+        <div class="container">
+            <img class="logo" src="https://mechanicalpeexamprep.com/wp-content/uploads/2020/09/Mechanical-PE-Exam-Prep.png" alt="Mechanical PE Exam Prep">
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero" id="hero">
+        <div class="container">
+            <div class="hero-text">
+                <div class="hero-eyebrow">Critical Systems Engineering</div>
+                <h1>Earn 12 PDH Credits While Mastering Failure-Intolerant Systems.</h1>
+                <p>A self-paced course for licensed engineers who work on — or want to work on — high-stakes, mission-critical infrastructure.</p>
+                <div class="hero-rating">
+                    <span class="hero-stars">★★★★★</span>
+                    <span class="hero-rating-text"><strong>4.7 Average Rating</strong> · 112 reviews</span>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-green mpep-stripe-btn" style="color:#fff!important;text-decoration:none!important;">Enroll Now</a>
+                    <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=critical_systems" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+                        <span class="btn-main">Save 10%</span>
+                        <span class="btn-sub">Pay with Bitcoin</span>
+                    </a>
+                    <div class="btn-reassurance">🔒 Secure checkout &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; 12 PDH credits &nbsp;·&nbsp; Questions? <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">Email Dan</a></div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://mechanicalpeexamprep.com/wp-content/uploads/2024/01/CSE-thumbnail.png" alt="Critical Systems Engineering Course" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURE GRID -->
+    <section class="light-green">
+        <h2>Built for Working Engineers</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-card-icon">⚡</div>
+                <div class="feature-card-title">Real-World Engineering</div>
+                <div class="feature-card-desc">Lessons based on the actual demands of critical systems — not textbook theory.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-icon">🕒</div>
+                <div class="feature-card-title">Flexible, Self-Paced</div>
+                <div class="feature-card-desc">100% on-demand video. Learn whenever and wherever it works for you.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-icon">📄</div>
+                <div class="feature-card-title">12 PDH Credits</div>
+                <div class="feature-card-desc">Complete the course and receive a certificate for your PE license renewal records.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-icon">🛠️</div>
+                <div class="feature-card-title">Built by a Licensed PE</div>
+                <div class="feature-card-desc">Created by Dan Molloy, PE — with firsthand experience in failure-intolerant systems design and operations.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU'LL LEARN (accordion) -->
+    <section>
+        <h2>What You'll Learn</h2>
+        <p style="margin-bottom:16px;font-size:0.95rem;color:#444;">Focused, practical modules that equip you to handle critical systems with confidence.</p>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                UPS Systems
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Uninterruptible power supply system design, battery maintenance, failure modes, and how to ensure reliable power continuity in high-stakes environments.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Cooling
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>CRAHs, CRACs, airflow management, and design strategies for redundancy and resilience in critical cooling infrastructure.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Fire Protection
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Detection systems, suppression methods, and common missteps in code compliance for mission-critical facilities.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Static Transfer Switches &amp; PDUs
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>How power is safely distributed and switched across redundant sources — the mechanics and the decision-making that keeps systems online.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Capacity Management
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Balancing power, cooling, space, and network resources to avoid the twin failure modes of under-provisioning and over-provisioning.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Maintenance Management
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Proactive preventive maintenance systems designed for operational longevity and maximum uptime in critical environments.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Monitoring &amp; Controls
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>BMS, EPMS, and alarm configuration — keeping critical infrastructure visible, responsive, and under control at all times.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Incident Management
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Responding quickly and effectively to outages, with a focus on safety, communication, and minimizing downtime.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Energy Efficiency
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>Finding real opportunities to reduce power usage without compromising system reliability or uptime commitments.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                Commissioning
+                <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+                <p>How to execute, test, and validate systems so everything works — on Day 1 and Day 1,000.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL 1 -->
+    <div class="testimonial-block">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Excellent instructor. This is the best review that can sum up everything in one day. This review provides a confident step forward. Thanks Dan, you are an excellent instructor and made things easier by your simple approach."</p>
+        <div class="testimonial-name">— Ahmed</div>
+    </div>
+
+    <!-- WHO THIS IS FOR -->
+    <section class="alt-bg">
+        <h2>Who This Is For</h2>
+        <ul>
+            <li>Licensed PEs who need PDH credits for license renewal</li>
+            <li>Engineers working on or transitioning into mission-critical infrastructure</li>
+            <li>Mechanical and electrical engineers who want to understand the full critical systems picture</li>
+            <li>Anyone who needs to think, plan, and execute with precision in high-stakes environments</li>
+            <li>Engineers who want practical insight — not just theory</li>
+        </ul>
+    </section>
+
+    <!-- TESTIMONIAL 2 -->
+    <div class="testimonial-block">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"Exactly what I was looking for. Great explanations. I'm not taking any other review courses. The material offered here and on YouTube from Dan Molloy feels more than adequate."</p>
+        <div class="testimonial-name">— Brian</div>
+    </div>
+
+    <!-- PDH CREDITS -->
+    <section class="light-green">
+        <h2>Earn 12 PDH Credits</h2>
+        <div class="pdh-badge-row">
+            <div class="pdh-badge">
+                <div class="pdh-badge-number">12</div>
+                <div class="pdh-badge-label">PDH Credits</div>
+            </div>
+            <div class="pdh-text">
+                <p>Professional Development Hours (PDHs) are required by most states to maintain your PE license. This course is structured to meet accepted continuing education standards and includes quizzes and a final exam (70% passing score) to validate completion.</p>
+                <p style="margin-top:12px;">Upon successful completion, you'll receive a certificate confirming your 12 PDH credits — ready for your license renewal records.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTRUCTOR -->
+    <section>
+        <h2>Your Instructor</h2>
+        <div class="bio-row">
+            <div style="flex-shrink:0;width:110px;height:110px;border-radius:50%;border:3px solid #2d7a4f;overflow:hidden;">
+                <img src="https://mechanicalpeexamprep.com/wp-content/uploads/2020/05/Dan-Profile.png" alt="Dan Molloy, PE" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div class="bio-text">
+                <h3>Dan Molloy, PE</h3>
+                <p>Dan is a licensed Professional Engineer and the founder of Mechanical PE Exam Prep. With over a decade of hands-on experience in critical systems design, commissioning, and operations, Dan brings real-world expertise to every lesson. His teaching bridges the gap between textbook knowledge and the high-stakes challenges engineers face in the field.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <div class="cta-section">
+        <h2>Enroll Now</h2>
+        <p style="color:rgba(255,255,255,0.85);font-size:1rem;margin-top:6px;">Instant access. 12 PDH credits upon completion.</p>
+        <div class="price">$399</div>
+        <div class="btn-group" style="justify-content:center;margin-top:20px;">
+            <a href="#" class="btn btn-green mpep-stripe-btn" style="background-color:#fff!important;color:#2d7a4f!important;text-decoration:none!important;">Enroll Now</a>
+            <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=critical_systems" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+                <span class="btn-main">Save 10%</span>
+                <span class="btn-sub">Pay with Bitcoin</span>
+            </a>
+            <div class="btn-reassurance">🔒 Secure checkout &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Questions? <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">Email Dan</a></div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <section>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <strong>Is this course accepted for PDH credit in my state?</strong>
+                <p>In most states, yes. This course meets continuing education standards for licensed PEs and includes a certificate of completion. Most states accept self-directed learning if it's relevant and well-documented. A few states (NY, FL, NC, LA, IN, NJ) have more specific requirements — check with your board if you're licensed in one of them.</p>
+            </div>
+            <div class="faq-item">
+                <strong>How many PDH hours will I earn?</strong>
+                <p>12 PDH hours upon successful completion of the course and final exam.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Is there a test I need to pass?</strong>
+                <p>Yes. There's a short quiz at the end of each section and a final exam at the end of the course. A 70% passing score is required to earn your certificate. You can review material and retake quizzes if needed.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Will I receive a certificate?</strong>
+                <p>Yes. Once you complete the course and pass the final exam, you'll receive a certificate confirming your 12 PDH credits.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Can I access this on mobile?</strong>
+                <p>Yes. Watch on any device with internet access. Progress is tracked automatically.</p>
+            </div>
+            <div class="faq-item">
+                <strong>Do I need a PE license to enroll?</strong>
+                <p>No. The course is designed for licensed PEs seeking PDH credit, but anyone interested in critical systems engineering is welcome to enroll.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Mechanical PE Exam Prep · <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">dan@mechanicalpeexamprep.com</a></p>
+    </footer>
+
+    <!-- STICKY CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <span class="sticky-cta-text"><strong>Critical Systems Engineering</strong> — 12 PDH credits, instant access</span>
+        <a href="#" class="btn btn-green mpep-stripe-btn" style="color:#fff!important;text-decoration:none!important;">Enroll Now</a>
+    </div>
+
+    <script>
+        // Accordion — one open at a time
+        function toggleAccordion(header) {
+            const isActive = header.classList.contains('active');
+            document.querySelectorAll('.accordion-header.active').forEach(function(h) {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.remove('active');
+            });
+            if (!isActive) {
+                header.classList.add('active');
+                header.nextElementSibling.classList.add('active');
+            }
+        }
+
+        // Sticky CTA
+        const hero = document.getElementById('hero');
+        const stickyCta = document.getElementById('stickyCta');
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (!entry.isIntersecting) { stickyCta.classList.add('visible'); }
+                else { stickyCta.classList.remove('visible'); }
+            });
+        }, { threshold: 0 });
+        observer.observe(hero);
+    </script>
+
+    <script>
+    document.querySelectorAll('.mpep-stripe-btn').forEach(function(btn){
+        btn.addEventListener('click',function(e){
+            e.preventDefault();var orig=btn.innerHTML;
+            btn.innerHTML='Loading...';btn.style.opacity='0.7';
+            fetch('https://btc.mechanicalpeexamprep.com/create-checkout-session-product',{
+                method:'POST',headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({productId:'critical_systems'})
+            }).then(r=>r.json()).then(d=>{if(d.url)window.location.href=d.url;})
+              .catch(()=>{btn.innerHTML=orig;btn.style.opacity='1';});
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+    a { color: #dd2743; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+
+    /* ── HEADER ── */
+    header { background: #fff; border-top: 4px solid #dd2743; padding: 16px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+    header .container { display: flex; align-items: center; justify-content: space-between; }
+    header img.logo { height: 48px; }
+
+    /* ── HERO ── */
+    .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%); color: #fff; padding: 70px 0 60px; }
+    .hero .container { display: flex; align-items: center; gap: 50px; }
+    .hero-text { flex: 1; }
+    .hero-image { flex: 0 0 260px; text-align: center; }
+    .hero-image img { max-width: 100%; border-radius: 6px; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+    .hero-eyebrow { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #f0b429; margin-bottom: 14px; }
+    .hero h1 { font-size: 46px; line-height: 1.1; margin-bottom: 18px; color: #fff; }
+    .hero p { font-size: 18px; color: #c9d0d8; max-width: 520px; margin-bottom: 16px; line-height: 1.7; }
+    .hero-rating { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+    .hero-stars { color: #f0b429; font-size: 20px; letter-spacing: 2px; }
+    .hero-rating-text { font-size: 14px; color: #c9d0d8; }
+    .hero-rating-text strong { color: #fff; }
+
+    /* ── BUTTONS ── */
+    .btn-group { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn { display: inline-block; border-radius: 4px; cursor: pointer; border: none; text-decoration: none; transition: filter 0.2s, transform 0.1s; }
+    .btn:hover { filter: brightness(1.1); transform: translateY(-1px); text-decoration: none; }
+    .btn-red { background: #dd2743; color: #fff; padding: 16px 32px; font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .btn-orange { background: #e07b00; color: #fff; padding: 10px 28px; text-align: center; line-height: 1.2; }
+    .btn-orange .btn-main { display: block; font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .btn-orange .btn-sub { display: block; font-size: 12px; font-weight: 400; opacity: 0.85; letter-spacing: 0.5px; margin-top: 2px; }
+    .btn-reassurance { font-size: 12px; color: #aab; margin-top: 10px; width: 100%; }
+    .btn-reassurance a { color: #8af; }
+
+    /* ── SECTION BASE ── */
+    .section { padding: 64px 0; }
+    .section-alt { background: #f7f8fa; }
+    .section-dark { background: #1a1a2e; color: #fff; }
+    .section-title { font-size: 32px; margin-bottom: 10px; color: #1a1a2e; }
+    .section-dark .section-title { color: #fff; }
+    .divider { width: 50px; height: 3px; background: #dd2743; margin: 10px 0 30px; }
+
+    /* ── INTRO ── */
+    .intro-inner { display: flex; align-items: center; gap: 48px; }
+    .intro-text { flex: 1; }
+    .intro-text p { font-size: 18px; line-height: 1.8; color: #444; }
+    .intro-badge { flex: 0 0 180px; text-align: center; background: #dd2743; color: #fff; border-radius: 50%; width: 180px; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(221,39,67,0.3); flex-shrink: 0; }
+    .intro-badge-number { font-family: 'Oswald', sans-serif; font-size: 52px; font-weight: 700; line-height: 1; }
+    .intro-badge-label { font-family: 'Oswald', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 6px; line-height: 1.3; padding: 0 16px; }
+
+    /* ── WHAT'S INSIDE ── */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-top: 10px; }
+    .stat-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 28px 24px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .stat-number { font-family: 'Oswald', sans-serif; font-size: 56px; font-weight: 700; color: #dd2743; line-height: 1; margin-bottom: 8px; }
+    .stat-label { font-family: 'Oswald', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; color: #1a1a2e; margin-bottom: 8px; }
+    .stat-desc { font-size: 13px; color: #666; line-height: 1.5; }
+
+    /* ── WHO IS THIS FOR ── */
+    .for-box { background: #1a1a2e; border-radius: 8px; padding: 40px 48px; display: flex; gap: 36px; align-items: flex-start; }
+    .for-icon { font-size: 42px; flex-shrink: 0; margin-top: 4px; }
+    .for-content h3 { font-size: 24px; color: #fff; margin-bottom: 14px; }
+    .for-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; }
+    .for-item { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: #c9d0d8; line-height: 1.5; }
+    .for-item-check { color: #f0b429; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+
+    /* ── TOPICS CASCADE ── */
+    .topics-cascade { position: relative; padding-left: 32px; }
+    .topics-cascade::before { content: ''; position: absolute; left: 14px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(to bottom, #dd2743, rgba(221,39,67,0.15)); }
+    .cascade-row { position: relative; margin-bottom: 10px; }
+    .cascade-row::before { content: ''; position: absolute; left: -18px; top: 50%; transform: translateY(-50%); width: 14px; height: 2px; background: #dd2743; }
+    .cascade-row::after { content: ''; position: absolute; left: -6px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid #dd2743; }
+    .cascade-bar { display: inline-flex; align-items: center; gap: 14px; width: 295px; background: #fff; border: 1px solid #e5e7eb; border-left: 4px solid #dd2743; border-radius: 4px; padding: 13px 22px; font-size: 16px; font-weight: 600; color: #1a1a2e; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: transform 0.15s, box-shadow 0.15s; }
+    .cascade-bar:hover { transform: translateX(3px); box-shadow: 0 3px 10px rgba(221,39,67,0.15); }
+    .cascade-num { font-family: 'Oswald', sans-serif; font-size: 13px; color: #dd2743; background: rgba(221,39,67,0.08); border-radius: 3px; padding: 2px 7px; flex-shrink: 0; letter-spacing: 0.5px; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .testimonial-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 28px; }
+    .testimonial-stars { color: #f0b429; font-size: 18px; margin-bottom: 14px; }
+    .testimonial-text { font-size: 15px; line-height: 1.75; color: #d4dae2; font-style: italic; margin-bottom: 18px; }
+    .testimonial-author { font-family: 'Oswald', sans-serif; font-size: 15px; color: #f0b429; letter-spacing: 0.5px; }
+
+    /* ── DAN BIO ── */
+    .dan-bio { display: flex; gap: 36px; align-items: center; max-width: 800px; }
+    .dan-photo { flex-shrink: 0; }
+    .dan-photo img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #dd2743; object-fit: cover; }
+    .dan-text h4 { font-size: 20px; color: #1a1a2e; margin-bottom: 6px; }
+    .dan-text p { font-size: 15px; color: #555; line-height: 1.7; }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .compare-table th { font-family: 'Oswald', sans-serif; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; padding: 16px 20px; text-align: center; }
+    .compare-table th:first-child { text-align: left; color: #666; }
+    .compare-table th.col-ebook { background: #f7f8fa; color: #1a1a2e; }
+    .compare-table th.col-bundle { background: #dd2743; color: #fff; }
+    .compare-table td { padding: 14px 20px; border-bottom: 1px solid #eee; vertical-align: middle; }
+    .compare-table td:first-child { color: #444; }
+    .compare-table td:not(:first-child) { text-align: center; }
+    .compare-table th.col-ebook, .compare-table td:nth-child(2) { background: #f7f8fa; }
+    .compare-table th.col-bundle, .compare-table td:nth-child(3) { background: rgba(221,39,67,0.04); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .price-row td { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; color: #1a1a2e; padding: 20px; }
+    .compare-table .price-row td:nth-child(3) { color: #dd2743; }
+    .check { color: #dd2743; font-size: 18px; font-weight: 700; }
+    .cross { color: #ccc; font-size: 18px; }
+    .compare-cta { text-align: center; margin-top: 28px; }
+    .compare-cta a { font-family: 'Oswald', sans-serif; font-size: 15px; color: #dd2743; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── UPSELL ── */
+    .upsell-box { background: #fff; border: 2px solid #dd2743; border-radius: 8px; padding: 40px 48px; display: flex; align-items: flex-start; gap: 36px; }
+    .upsell-icon { font-size: 48px; flex-shrink: 0; }
+    .upsell-content h3 { font-size: 26px; color: #1a1a2e; margin-bottom: 12px; }
+    .upsell-content p { font-size: 16px; color: #444; line-height: 1.7; margin-bottom: 20px; }
+    .upsell-features { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 24px; }
+    .upsell-features li { font-size: 15px; color: #333; padding-left: 20px; position: relative; }
+    .upsell-features li::before { content: "✓"; position: absolute; left: 0; color: #dd2743; font-weight: 700; }
+    .upsell-link { font-family: 'Oswald', sans-serif; font-size: 16px; color: #dd2743; text-transform: uppercase; letter-spacing: 1px; }
+    .upsell-link:hover { text-decoration: underline; }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta { background: linear-gradient(135deg, #dd2743 0%, #b01e33 100%); color: #fff; text-align: center; padding: 72px 0; }
+    .bottom-cta h2 { font-size: 38px; margin-bottom: 14px; color: #fff; }
+    .bottom-cta p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .bottom-cta .btn-group { justify-content: center; }
+    .bottom-cta .btn-red { background: #fff; color: #dd2743; }
+    .bottom-cta .btn-reassurance { color: rgba(255,255,255,0.6); }
+    .bottom-cta .btn-reassurance a { color: rgba(255,255,255,0.85); }
+    .bottom-cta .price { font-family: 'Oswald', sans-serif; font-size: 2.4rem; font-weight: 700; color: #fff; margin: 10px 0 24px; }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 780px; }
+    .faq-item { border-bottom: 1px solid #e5e7eb; padding: 22px 0; }
+    .faq-item:first-child { border-top: 1px solid #e5e7eb; }
+    .faq-q { font-family: 'Oswald', sans-serif; font-size: 18px; color: #1a1a2e; margin-bottom: 10px; }
+    .faq-a { font-size: 15px; color: #555; line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer { background: #222; color: #aaa; text-align: center; padding: 28px; font-size: 14px; border-top: 4px solid #dd2743; margin-bottom: 60px; }
+    footer a { color: #aaa; }
+
+    /* ── FEATURE GRID ── */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 10px; }
+    .feature-card { background: #fff; border: 1px solid #e5e7eb; border-top: 4px solid #dd2743; border-radius: 6px; padding: 24px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .feature-card-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-card-title { font-family: 'Oswald', sans-serif; font-size: 17px; color: #1a1a2e; margin-bottom: 8px; }
+    .feature-card-desc { font-size: 14px; color: #555; line-height: 1.6; }
+
+    /* ── PULL-QUOTE TESTIMONIALS ── */
+    .pull-quote { background: #1a1a2e; border-radius: 8px; text-align: center; padding: 40px 48px; max-width: 780px; margin: 0 auto 24px; }
+    .pull-quote:last-child { margin-bottom: 0; }
+    .pull-quote-stars { font-family: 'Oswald', sans-serif; color: #f0b429; font-size: 20px; letter-spacing: 2px; margin-bottom: 16px; }
+    .pull-quote-text { font-size: 1.05rem; line-height: 1.75; color: #c9d0d8; font-style: italic; max-width: 660px; margin: 0 auto 18px; }
+    .pull-quote-name { font-family: 'Oswald', sans-serif; color: #f0b429; font-size: 15px; letter-spacing: 0.5px; }
+
+    /* ── STICKY CTA ── */
+    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: #1a1a2e; border-top: 3px solid #dd2743; padding: 12px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 1000; box-shadow: 0 -4px 16px rgba(0,0,0,0.3); transform: translateY(100%); transition: transform 0.3s ease; }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta-text { font-family: 'Oswald', sans-serif; color: #c9d0d8; font-size: 15px; white-space: nowrap; }
+    .sticky-cta-text strong { color: #fff; }
+    .sticky-cta .btn-red { padding: 10px 24px; font-size: 15px; white-space: nowrap; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .hero .container { flex-direction: column-reverse; }
+      .hero h1 { font-size: 32px; }
+      .intro-inner { flex-direction: column; align-items: flex-start; }
+      .intro-badge { align-self: center; }
+      .upsell-box { flex-direction: column; }
+      .upsell-features { grid-template-columns: 1fr; }
+      .for-box { flex-direction: column; }
+      .for-grid { grid-template-columns: 1fr; }
+      .dan-bio { flex-direction: column; align-items: flex-start; }
+      /* cascade collapses to single column on mobile */
+      .topics-cascade { padding-left: 0; }
+      .topics-cascade::before { display: none; }
+      .cascade-row { margin-left: 0 !important; }
+      .cascade-row::before, .cascade-row::after { display: none; }
+      .cascade-bar { width: 100%; }
+      .compare-table { font-size: 13px; }
+      .compare-table td, .compare-table th { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+<!-- HEADER -->
+  <header>
+    <div class="container">
+      <img class="logo" src="https://mechanicalpeexamprep.com/wp-content/uploads/2020/09/Mechanical-PE-Exam-Prep.png" alt="Mechanical PE Exam Prep">
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <div class="hero-eyebrow">HVAC &amp; Refrigeration PE Exam</div>
+        <h1>331 Practice Problems.<br>Every Topic.<br>Every Solution.</h1>
+        <p>The HVAC &amp; Refrigeration Practice Problems eBook gives you everything you need to master exam-style problems — at your own pace, on your own schedule.</p>
+        <div class="hero-rating">
+          <span class="hero-stars">★★★★★</span>
+          <span class="hero-rating-text"><strong>Excellent</strong> · 112 reviews</span>
+        </div>
+        <div class="btn-group">
+          <a href="#" class="btn btn-red mpep-stripe-btn" style="color:#fff!important;text-decoration:none!important;">Get the eBook</a>
+          <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=hvac_ebook" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+            <span class="btn-main">Save 10%</span>
+            <span class="btn-sub">Pay with Bitcoin</span>
+          </a>
+          <div class="btn-reassurance">🔒 Secure checkout &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Questions? <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">Email Dan</a></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://mechanicalpeexamprep.com/wp-content/uploads/2025/01/hvac-book-front-cover-resized.jpg" alt="HVAC & Refrigeration Practice Problems eBook">
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section intro">
+    <div class="container">
+      <div class="intro-inner">
+        <div class="intro-text">
+          <p>The practice problems eBook is the core study tool used by hundreds of engineers who've passed the Mechanical PE HVAC &amp; Refrigeration exam. Written by Dan Molloy, PE, every problem is original, exam-caliber, and comes with a detailed step-by-step written solution.</p>
+        </div>
+        <div class="intro-badge">
+          <div class="intro-badge-number">500+</div>
+          <div class="intro-badge-label">Engineers Passed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE GRID -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Built for One Purpose</h2>
+      <div class="divider"></div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-card-icon">📝</div>
+          <div class="feature-card-title">331 Exam-Caliber Problems</div>
+          <div class="feature-card-desc">Original problems written specifically for the HVAC &amp; Refrigeration PE exam — not recycled textbook content.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">✅</div>
+          <div class="feature-card-title">Full Written Solutions</div>
+          <div class="feature-card-desc">Every problem has a detailed step-by-step written solution. No answer keys. No shortcuts.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">🔍</div>
+          <div class="feature-card-title">Key Search Terms</div>
+          <div class="feature-card-desc">Every problem flags where to find the relevant formula or table in the NCEES handbook — exactly how you'll work on exam day.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">📋</div>
+          <div class="feature-card-title">2 Full Practice Exams</div>
+          <div class="feature-card-desc">Simulate real exam conditions to identify gaps and build exam-day confidence before it counts.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IS THIS FOR -->
+  <section class="section">
+    <div class="container">
+      <div class="for-box">
+        <div class="for-icon">🎯</div>
+        <div class="for-content">
+          <h3>Is This eBook Right for You?</h3>
+          <div class="for-grid">
+            <div class="for-item"><span class="for-item-check">✓</span> You're studying for the Mechanical PE HVAC &amp; Refrigeration exam</div>
+            <div class="for-item"><span class="for-item-check">✓</span> You want a structured set of exam-caliber problems with full written solutions</div>
+            <div class="for-item"><span class="for-item-check">✓</span> You're working independently and don't need access to video solutions or technical Q&amp;A</div>
+            <div class="for-item"><span class="for-item-check">✓</span> The Full Access Bundle isn't in the budget at this time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS COVERED -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Topics Covered</h2>
+      <div class="divider"></div>
+      <div class="topics-cascade">
+        <div class="cascade-row" style="margin-left: 0px">
+          <div class="cascade-bar"><span class="cascade-num">01</span> Thermodynamics</div>
+        </div>
+        <div class="cascade-row" style="margin-left: 110px">
+          <div class="cascade-bar"><span class="cascade-num">02</span> Fluid Mechanics</div>
+        </div>
+        <div class="cascade-row" style="margin-left: 220px">
+          <div class="cascade-bar"><span class="cascade-num">03</span> Psychrometrics</div>
+        </div>
+        <div class="cascade-row" style="margin-left: 330px">
+          <div class="cascade-bar"><span class="cascade-num">04</span> Heat Transfer</div>
+        </div>
+        <div class="cascade-row" style="margin-left: 440px">
+          <div class="cascade-bar"><span class="cascade-num">05</span> HVAC Systems</div>
+        </div>
+        <div class="cascade-row" style="margin-left: 550px">
+          <div class="cascade-bar"><span class="cascade-num">06</span> Systems &amp; Components</div>
+        </div>
+        <div class="cascade-row" style="margin-left: 660px">
+          <div class="cascade-bar"><span class="cascade-num">07</span> Supporting Topics</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">What Engineers Are Saying</h2>
+      <div class="divider"></div>
+      <div class="pull-quote">
+        <div class="pull-quote-stars">★★★★★</div>
+        <p class="pull-quote-text">"After using the Mechanical PE Exam eBook (HVAC &amp; Refrigeration) as my primary study material, I passed the PE Exam on my first try! I did every problem in the eBook at least twice, and because of that, I finished with an hour to spare!"</p>
+        <div class="pull-quote-name">— Benjamin Savoy, PE</div>
+      </div>
+      <div class="pull-quote">
+        <div class="pull-quote-stars">★★★★★</div>
+        <p class="pull-quote-text">"Where this course really shines is getting you able to navigate the reference manual. That is probably the most important part when taking the PE."</p>
+        <div class="pull-quote-name">— Mark Blanchette, PE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAN BIO -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Written by a PE, for PE Candidates</h2>
+      <div class="divider"></div>
+      <div class="dan-bio">
+        <div class="dan-photo">
+          <img src="https://mechanicalpeexamprep.com/wp-content/uploads/2020/05/Dan-Profile.png" alt="Dan Molloy, PE">
+        </div>
+        <div class="dan-text">
+          <h4>Dan Molloy, PE</h4>
+          <p>Dan is a licensed Professional Engineer and the founder of Mechanical PE Exam Prep. He wrote every problem in this eBook — and every solution. His focus: exam-relevant problems with explanations that actually make sense, not just answers. Hundreds of engineers have passed the PE using his materials.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">eBook vs. Full Access Bundle</h2>
+      <div class="divider"></div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-ebook">Practice Problems eBook</th>
+            <th class="col-bundle">Full Access Bundle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>331 original practice problems</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>2 full-length practice exams</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Detailed written solutions</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Key Search Terms (all problems)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Step-by-step video solutions</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Bi-weekly live Office Hours</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Monthly 1-on-1 check-in calls</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Print edition of the book</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Lifetime Access</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Pass Guarantee</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+          <tr class="price-row"><td>Price</td><td>$649</td><td>$1,999</td></tr>
+        </tbody>
+      </table>
+      <div class="compare-cta">
+        <a href="https://mechanicalpeexamprep.com/hvac-and-refrigeration-full-access-bundle/">See everything included in the Full Access Bundle →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPSELL -->
+  <section class="section">
+    <div class="container">
+      <div class="upsell-box">
+        <div class="upsell-icon">📦</div>
+        <div class="upsell-content">
+          <h3>Want the Complete Package?</h3>
+          <p>This eBook is included in the <strong>HVAC &amp; Refrigeration Full Access Bundle ($1,999)</strong>. The bundle adds everything on top of the practice problems:</p>
+          <ul class="upsell-features">
+            <li>Step-by-step video solutions for every problem</li>
+            <li>Bi-weekly live Office Hours with Dan</li>
+            <li>Monthly 1-on-1 check-in calls</li>
+            <li>Lifetime Access</li>
+            <li>Pass Guarantee</li>
+            <li>Private Facebook Group</li>
+            <li>Print edition of the practice problems book</li>
+          </ul>
+          <a href="https://mechanicalpeexamprep.com/hvac-and-refrigeration-full-access-bundle/" class="upsell-link">See the Full Access Bundle →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="bottom-cta">
+    <div class="container">
+      <h2>Ready to Start Studying?</h2>
+      <p>Get instant access to 331 exam-caliber HVAC &amp; Refrigeration practice problems.</p>
+      <div class="price">$649</div>
+      <div class="btn-group">
+        <a href="#" class="btn btn-red mpep-stripe-btn" style="background-color:#fff!important;color:#dd2743!important;text-decoration:none!important;">Get the eBook</a>
+        <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=hvac_ebook" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+          <span class="btn-main">Save 10%</span>
+          <span class="btn-sub">Pay with Bitcoin</span>
+        </a>
+        <div class="btn-reassurance">🔒 Secure checkout &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Questions? <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">Email Dan</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="divider"></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Is this the same eBook included in the Full Access Bundle?</div>
+          <div class="faq-a">Yes. The content is identical. The bundle adds video solutions, live Office Hours, 1-on-1 coaching, Lifetime Access, and a Pass Guarantee.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is this a physical book or digital?</div>
+          <div class="faq-a">This is a digital eBook. After purchase, you'll get instant access through the Thinkific learning platform. The print edition is included exclusively with the Full Access Bundle.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I apply the eBook price toward the Full Access Bundle later?</div>
+          <div class="faq-a">Yes. If you decide to upgrade, email Dan at dan@mechanicalpeexamprep.com and he'll give you a credit for what you've already paid.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Are the problems aligned with the CBT exam format?</div>
+          <div class="faq-a">Yes. Every problem is solved using the NCEES Mechanical Reference Handbook PDF, with Key Search Terms called out so you can practice locating information quickly — exactly how you'll work during the computer-based exam.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How hard are the problems?</div>
+          <div class="faq-a">Most are written to be as hard as actual exam problems or slightly harder. Every problem has at least one key insight embedded in it, and very often two or three.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Mechanical PE Exam Prep · <a href="#" onclick="window.location='mailto:dan@mechanicalpeexamprep.com';return false;">dan@mechanicalpeexamprep.com</a></p>
+  </footer>
+
+  <!-- STICKY CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <span class="sticky-cta-text"><strong>HVAC &amp; Refrigeration Practice Problems</strong> — 331 problems, instant access</span>
+    <a href="#" class="btn btn-red mpep-stripe-btn" style="color:#fff!important;text-decoration:none!important;">Get the eBook</a>
+  </div>
+
+  <script>
+    const hero = document.querySelector('.hero');
+    const stickyCta = document.getElementById('stickyCta');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) { stickyCta.classList.add('visible'); }
+        else { stickyCta.classList.remove('visible'); }
+      });
+    }, { threshold: 0 });
+    observer.observe(hero);
+  </script>
+
+    <script>
+    document.querySelectorAll('.mpep-stripe-btn').forEach(function(btn){
+        btn.addEventListener('click',function(e){
+            e.preventDefault();var orig=btn.innerHTML;
+            btn.innerHTML='Loading...';btn.style.opacity='0.7';
+            fetch('https://btc.mechanicalpeexamprep.com/create-checkout-session-product',{
+                method:'POST',headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({productId:'hvac_ebook'})
+            }).then(r=>r.json()).then(d=>{if(d.url)window.location.href=d.url;})
+              .catch(()=>{btn.innerHTML=orig;btn.style.opacity='1';});
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+name: Deploy to WordPress
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Deploy changed pages
+        env:
+          WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
+        run: python deploy_ci.py
