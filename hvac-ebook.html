@@ -494,5 +494,20 @@
         });
     });
     </script>
+<script>
+    // GA4 Event Tracking for MPEP Product Pages
+    function trackProductButtonClick(productId, paymentMethod) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'begin_checkout', {
+          currency: 'USD',
+          items: [{
+            item_id: productId,
+            item_name: productId.replace(/_/g, ' '),
+            item_category: paymentMethod
+          }]
+        });
+      }
+    }
+</script>
 </body>
 </html>

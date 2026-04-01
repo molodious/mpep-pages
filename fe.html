@@ -625,7 +625,7 @@
                 <div class="pricing-divider"></div>
                 <div class="pricing-buttons">
                     <a href="#" class="btn-pricing-stripe mpep-stripe-btn" data-product-id="fe_3mo" style="color:#fff!important;text-decoration:none!important;">Enroll</a>
-                    <a href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_3mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
+                    <a onclick="trackProductButtonClick('fe_3mo', 'btcpay');" href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_3mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
                         <span class="btc-main">Save an extra 10%</span>
                         <span class="btc-sub">Pay with Bitcoin — $539</span>
                     </a>
@@ -642,7 +642,7 @@
                 <div class="pricing-divider"></div>
                 <div class="pricing-buttons">
                     <a href="#" class="btn-pricing-stripe mpep-stripe-btn" data-product-id="fe_6mo" style="color:#fff!important;text-decoration:none!important;">Enroll</a>
-                    <a href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_6mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
+                    <a onclick="trackProductButtonClick('fe_6mo', 'btcpay');" href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_6mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
                         <span class="btc-main">Save an extra 10%</span>
                         <span class="btc-sub">Pay with Bitcoin — $899</span>
                     </a>
@@ -659,7 +659,7 @@
                 <div class="pricing-divider"></div>
                 <div class="pricing-buttons">
                     <a href="#" class="btn-pricing-stripe mpep-stripe-btn" data-product-id="fe_12mo" style="color:#fff!important;text-decoration:none!important;">Enroll</a>
-                    <a href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_12mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
+                    <a onclick="trackProductButtonClick('fe_12mo', 'btcpay');" href="https://www.mechanicalpeexamprep.com/btcpay-checkout/?product=fe_12mo" class="btn-pricing-btc" style="color:#fff!important;text-decoration:none!important;">
                         <span class="btc-main">Save an extra 10%</span>
                         <span class="btc-sub">Pay with Bitcoin — $1,619</span>
                     </a>
@@ -758,5 +758,20 @@
             });
         });
     </script>
+<script>
+    // GA4 Event Tracking for MPEP Product Pages
+    function trackProductButtonClick(productId, paymentMethod) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'begin_checkout', {
+          currency: 'USD',
+          items: [{
+            item_id: productId,
+            item_name: productId.replace(/_/g, ' '),
+            item_category: paymentMethod
+          }]
+        });
+      }
+    }
+</script>
 </body>
 </html>
