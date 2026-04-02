@@ -500,6 +500,7 @@
     function trackProductButtonClick(productId, paymentMethod) {
       if (typeof gtag !== 'undefined') {
         gtag('event', 'begin_checkout', {
+          payment_method: paymentMethod,
           currency: 'USD',
           items: [{
             item_id: productId,
