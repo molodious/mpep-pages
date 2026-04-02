@@ -564,6 +564,7 @@
             btn.addEventListener('click',function(e){
                 e.preventDefault();var orig=btn.innerHTML;
                 btn.innerHTML='Loading...';btn.style.opacity='0.7';
+                trackProductButtonClick('bundle_tfs', 'stripe');
                 fetch('https://btc.mechanicalpeexamprep.com/create-checkout-session-tfs',{
                     method:'POST',headers:{'Content-Type':'application/json'},
                     body:JSON.stringify({productId:'bundle_tfs'})

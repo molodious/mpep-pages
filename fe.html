@@ -750,6 +750,7 @@
                 if(!productId) return;
                 var orig=btn.innerHTML;
                 btn.innerHTML='Loading...';btn.style.opacity='0.7';
+                trackProductButtonClick(productId, 'stripe');
                 fetch('https://btc.mechanicalpeexamprep.com/create-checkout-session-product',{
                     method:'POST',headers:{'Content-Type':'application/json'},
                     body:JSON.stringify({productId:productId})

@@ -662,7 +662,7 @@
             </div>
             <div class="btn-group">
                 <a href="#" class="btn btn-red mpep-stripe-btn" style="color:#fff!important;text-decoration:none!important;">Enroll Now</a>
-                <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=fundamentals" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+                <a onclick="trackProductButtonClick('fundamentals', 'btcpay');" href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=fundamentals" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
                     <span class="btn-main">Save 10%</span>
                     <span class="btn-sub">Pay with Bitcoin</span>
                 </a>
@@ -909,7 +909,7 @@
         <div class="price">$399</div>
         <div class="btn-group" style="justify-content: center; margin-top: 20px;">
             <a href="#" class="btn btn-red mpep-stripe-btn"  style="background-color:#fff!important;color:#dd2743!important;text-decoration:none!important;">Enroll Now</a>
-            <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=fundamentals" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+            <a onclick="trackProductButtonClick('fundamentals', 'btcpay');" href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=fundamentals" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
                 <span class="btn-main">Save 10%</span>
                 <span class="btn-sub">Pay with Bitcoin</span>
             </a>
@@ -998,6 +998,7 @@
         btn.addEventListener('click',function(e){
             e.preventDefault();var orig=btn.innerHTML;
             btn.innerHTML='Loading...';btn.style.opacity='0.7';
+            trackProductButtonClick('fundamentals', 'stripe');
             fetch('https://btc.mechanicalpeexamprep.com/create-checkout-session-product',{
                 method:'POST',headers:{'Content-Type':'application/json'},
                 body:JSON.stringify({productId:'fundamentals'})

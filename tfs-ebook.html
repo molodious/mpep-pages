@@ -212,7 +212,7 @@
         </div>
         <div class="btn-group">
           <a href="#" class="btn btn-red mpep-stripe-btn" style="color:#fff!important;text-decoration:none!important;">Get the eBook</a>
-          <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=tfs_ebook" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+          <a onclick="trackProductButtonClick('tfs_ebook', 'btcpay');" href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=tfs_ebook" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
             <span class="btn-main">Save 10%</span>
             <span class="btn-sub">Pay with Bitcoin</span>
           </a>
@@ -413,7 +413,7 @@
       <div class="price">$649</div>
       <div class="btn-group">
         <a href="#" class="btn btn-red mpep-stripe-btn" style="background-color:#fff!important;color:#dd2743!important;text-decoration:none!important;">Get the eBook</a>
-        <a href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=tfs_ebook" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
+        <a onclick="trackProductButtonClick('tfs_ebook', 'btcpay');" href="https://mechanicalpeexamprep.com/btcpay-checkout/?product=tfs_ebook" class="btn btn-orange" style="color:#fff!important;text-decoration:none!important;">
           <span class="btn-main">Save 10%</span>
           <span class="btn-sub">Pay with Bitcoin</span>
         </a>
@@ -480,6 +480,7 @@
         btn.addEventListener('click',function(e){
             e.preventDefault();var orig=btn.innerHTML;
             btn.innerHTML='Loading...';btn.style.opacity='0.7';
+            trackProductButtonClick('tfs_ebook', 'stripe');
             fetch('https://btc.mechanicalpeexamprep.com/create-checkout-session-product',{
                 method:'POST',headers:{'Content-Type':'application/json'},
                 body:JSON.stringify({productId:'tfs_ebook'})
