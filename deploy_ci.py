@@ -34,7 +34,7 @@ def deploy_page(filename: str) -> bool:
     title  = info['title']
     auth   = HTTPBasicAuth(WP_USER, WP_PASS)
 
-    with open(filename) as f:
+    with open(filename, encoding='utf-8') as f:
         html = f.read()
 
     content = build_wp_content(html)
