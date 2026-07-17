@@ -213,13 +213,27 @@
             color: #0d2b1e;
             cursor: pointer;
             padding: 14px 16px;
-            font-weight: 600;
-            font-size: 0.95rem;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            gap: 14px;
             transition: background-color 0.2s;
             user-select: none;
+        }
+        .accordion-label { flex: 1; min-width: 0; }
+        .accordion-title {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+        .accordion-summary {
+            display: block;
+            margin-top: 3px;
+            color: #5d6f64;
+            font-size: 0.82rem;
+            font-weight: 400;
+            line-height: 1.45;
         }
         .accordion-header:hover { background-color: #f0f7f3; }
         .accordion-header.active { background-color: #e6f2ec; }
@@ -228,7 +242,7 @@
             font-weight: 700;
             color: #2d7a4f;
             flex-shrink: 0;
-            margin-left: 12px;
+            margin-top: 2px;
             transition: transform 0.2s;
             line-height: 1;
         }
@@ -450,11 +464,14 @@
     <!-- WHAT YOU'LL LEARN (accordion) -->
     <section>
         <h2>What You'll Learn</h2>
-        <p style="margin-bottom:16px;font-size:0.95rem;color:#444;">Focused, practical modules that equip you to handle critical systems with confidence.</p>
+        <p style="margin-bottom:16px;font-size:0.95rem;color:#444;">Focused, practical modules that help you evaluate risk, make reliability-focused decisions, and operate critical systems with more confidence.</p>
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Electricity Fundamentals
+                <span class="accordion-label">
+                    <span class="accordion-title">Electricity Fundamentals</span>
+                    <span class="accordion-summary">Build the electrical base for understanding critical power systems.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -464,7 +481,10 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Power Quality
+                <span class="accordion-label">
+                    <span class="accordion-title">Power Quality</span>
+                    <span class="accordion-summary">Recognize power events and anticipate their operational impact.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -474,7 +494,10 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Emergency Generators
+                <span class="accordion-label">
+                    <span class="accordion-title">Emergency Generators</span>
+                    <span class="accordion-summary">Evaluate backup power protection against sustained outages.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -484,7 +507,10 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Automatic Transfer Switches
+                <span class="accordion-label">
+                    <span class="accordion-title">Automatic Transfer Switches</span>
+                    <span class="accordion-summary">Follow transfer sequences and troubleshoot the handoff to backup power.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -494,17 +520,23 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                UPS Systems
+                <span class="accordion-label">
+                    <span class="accordion-title">UPS Systems</span>
+                    <span class="accordion-summary">Protect critical loads and plan maintenance without exposing the load.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
-                <p>Understand how double-conversion UPS systems protect critical loads, how they operate across all four modes, and how to safely perform maintenance without exposing the load.</p>
+                <p>Understand how double-conversion UPS systems protect critical loads, recognize common failure modes, and evaluate maintenance choices that avoid exposing the load.</p>
             </div>
         </div>
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Static Transfer Switches &amp; PDUs
+                <span class="accordion-label">
+                    <span class="accordion-title">Static Transfer Switches &amp; PDUs</span>
+                    <span class="accordion-summary">Understand last-line power transfer and downstream distribution.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -514,17 +546,23 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Cooling
+                <span class="accordion-label">
+                    <span class="accordion-title">Cooling</span>
+                    <span class="accordion-summary">Identify airflow, redundancy, and heat-removal risks before uptime suffers.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
-                <p>Trace the full heat removal path from CPU to cooling tower, understand airside and waterside distribution, and learn how to evaluate cooling system performance against ASHRAE standards.</p>
+                <p>Trace the full heat-removal path from CPU to cooling tower, evaluate airflow and redundancy, and identify cooling risks before they become uptime problems.</p>
             </div>
         </div>
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Fire Protection
+                <span class="accordion-label">
+                    <span class="accordion-title">Fire Protection</span>
+                    <span class="accordion-summary">Balance life safety with protection of mission-critical infrastructure.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -534,7 +572,10 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Commissioning
+                <span class="accordion-label">
+                    <span class="accordion-title">Commissioning</span>
+                    <span class="accordion-summary">Validate systems early so facilities function as intended at handover.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -544,27 +585,36 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Monitoring &amp; Controls
+                <span class="accordion-label">
+                    <span class="accordion-title">Monitoring &amp; Controls</span>
+                    <span class="accordion-summary">Use alarms, trends, and controls data to see issues clearly.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
-                <p>Understand BMS and EPMS architecture, how digital and analog points work, how PID loops operate, and how to use graphics, alarms, and trends to maintain visibility over critical systems.</p>
+                <p>Understand BMS and EPMS architecture, interpret alarms and trends, and use controls data to distinguish routine conditions from issues that require action.</p>
             </div>
         </div>
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Incident Management
+                <span class="accordion-label">
+                    <span class="accordion-title">Incident Management</span>
+                    <span class="accordion-summary">Respond to outages with structure, speed, and better communication.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
-                <p>Develop the instincts, culture, and processes to respond decisively when things go wrong — and learn how post-mortem analysis and pre-mortem planning reduce the likelihood of future incidents.</p>
+                <p>Develop a structured response to outages focused on safety, speed, communication, and reducing the likelihood of repeat incidents.</p>
             </div>
         </div>
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Maintenance Management
+                <span class="accordion-label">
+                    <span class="accordion-title">Maintenance Management</span>
+                    <span class="accordion-summary">Build preventive programs that reduce unplanned failures.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
@@ -574,17 +624,23 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Capacity Management
+                <span class="accordion-label">
+                    <span class="accordion-title">Capacity Management</span>
+                    <span class="accordion-summary">Spot capacity risk across power, cooling, network, and space.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
-                <p>Learn how to track power, cooling, network, and space resources against actual load — accounting for redundancy and derating — so you never discover you've exceeded capacity during an outage.</p>
+                <p>Track power, cooling, network, and space resources against actual load so you can spot capacity risk before redundancy or derating exposes a weakness.</p>
             </div>
         </div>
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                Energy Efficiency
+                <span class="accordion-label">
+                    <span class="accordion-title">Energy Efficiency</span>
+                    <span class="accordion-summary">Reduce consumption without compromising reliability.</span>
+                </span>
                 <span class="accordion-icon">+</span>
             </div>
             <div class="accordion-content">
